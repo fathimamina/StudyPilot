@@ -1,0 +1,43 @@
+<form method="POST">
+    {% csrf_token %}
+
+    <input
+        type="text"
+        name="module_name"
+        placeholder="Enter module name"
+        required
+    >
+
+    <br><br>
+
+    <textarea
+        name="raw_text"
+        rows="20"
+        cols="80"
+        placeholder="Paste your module content here..."
+        required
+    ></textarea>
+
+    <br><br>
+
+    <button type="submit">Create Study Plan</button>
+</form>
+
+
+
+
+<hr>
+
+<h2>Saved Modules</h2>
+
+{% for module in modules %}
+
+    <h3>{{ module.name }}</h3>
+
+    <p>{{ module.raw_text }}</p>
+
+{% empty %}
+
+    <p>No modules saved yet.</p>
+
+{% endfor %}
